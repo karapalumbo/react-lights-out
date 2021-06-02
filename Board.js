@@ -33,9 +33,9 @@ function Board({ nrows = 6, ncols = 6, chanceLightStartsOn = 0.5 }) {
   /** create a board nrows high/ncols wide, each cell randomly lit or unlit */
   function createBoard() {
     let initialBoard = [];
-    for(let i = 0; i < nrows; i++) {
+    for (let i = 0; i < nrows; i++) {
       let row = [];
-      for(let j = 0; j < ncols; j++) {
+      for (let j = 0; j < ncols; j++) {
         row.push(Math.random() < chanceLightStartsOn)
       }
       initialBoard.push(row)
@@ -73,15 +73,21 @@ function Board({ nrows = 6, ncols = 6, chanceLightStartsOn = 0.5 }) {
   // TODO
 
   // make table board
+  let tableBoard = [];
+  
+  for (let i = 0; i < nrows; i++) {
+    let tableRow = [];
+    for (let j = 0; j < ncols; j++) {
+      tableRow.push(<Cell />)
+    }
+    tableBoard.push(<tr>{tableRow}</tr>)
+  }
 
   // TODO
   return (
     <table>
       <tbody>
-        <tr>
-           <Cell />
-           <Cell />
-        </tr>
+           {tableBoard}
       </tbody>
     </table>
   )
